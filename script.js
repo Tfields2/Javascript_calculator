@@ -35,6 +35,7 @@ class Calculator
 
     compute()
     {
+        debugger
         let computation
         const prev = parseFloat(this.previousOperand)
         const current = parseFloat(this.currentOperand)
@@ -56,12 +57,17 @@ class Calculator
             default:
                 return
         }
-        this.currentOperand = computation
+        if (Number.isInteger(computation)) {
+            this.currentOperand = computation.toString()
+          } else {
+            this.currentOperand = computation.toFixed(11).replace(/\.?0+$/, '')
+          }
         this.operation = undefined
         this.previousOperand = ''
     }
     getDisplayNumber(number)
     {
+        debugger
         const stringNumber = number.toString()
         const integerDigits = parseFloat(stringNumber.split('.')[0])
         const decimalDigits = stringNumber.split('.')[1]
@@ -85,8 +91,9 @@ class Calculator
     }
     updateDisplay()
     {
+        debugger
         this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
-        if(this.operation !== null)
+        if(this.operation !== undefined)
         {
             this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
         }
@@ -119,7 +126,7 @@ numberButtons.forEach(button => {
 
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
-        calculator.operation(button.innerText) 
+        calculator.chooseOperation(button.innerText) 
         calculator.updateDisplay()
     })
 })
