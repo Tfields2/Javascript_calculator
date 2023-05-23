@@ -94,6 +94,9 @@ class Calculator
         {
             this.previousOperandTextElement.innerText = ''
         }
+        if (this.currentOperand.length > 9) {
+            this.currentOperand = this.currentOperand.slice(0, 9);
+          }
     }
 }
 
