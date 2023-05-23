@@ -35,7 +35,6 @@ class Calculator
 
     compute()
     {
-        debugger
         let computation
         const prev = parseFloat(this.previousOperand)
         const current = parseFloat(this.currentOperand)
@@ -67,7 +66,6 @@ class Calculator
     }
     getDisplayNumber(number)
     {
-        debugger
         const stringNumber = number.toString()
         const integerDigits = parseFloat(stringNumber.split('.')[0])
         const decimalDigits = stringNumber.split('.')[1]
@@ -91,7 +89,6 @@ class Calculator
     }
     updateDisplay()
     {
-        debugger
         this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
         if(this.operation !== undefined)
         {
