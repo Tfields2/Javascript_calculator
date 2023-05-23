@@ -19,6 +19,7 @@ class Calculator
     appendNumber(number)
     {
         if(number === '.' && this.currentOperand.includes('.')) return
+        if(this.currentOperand.length >= 9) return;
         this.currentOperand = this.currentOperand.toString() + number.toString()
     }
     chooseOperation(operation)
@@ -59,7 +60,7 @@ class Calculator
         if (Number.isInteger(computation)) {
             this.currentOperand = computation.toString()
           } else {
-            this.currentOperand = computation.toFixed(11).replace(/\.?0+$/, '')
+            this.currentOperand = computation.toFixed(7).replace(/\.?0+$/, '')
           }
         this.operation = undefined
         this.previousOperand = ''
